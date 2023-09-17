@@ -13,8 +13,10 @@ import {
   walletQrHelpBtnSelector,
   walletQrLogoSelector,
   walletQrSelector,
+  walletScanTextSelector,
+  walletTextSelector,
 } from './utils'
-import { DOWNLOAD_ID } from './const'
+import { APP_CONFIG, DOWNLOAD_ID } from './const'
 
 export const URI_AVAILABLE = 'URI_AVAILABLE'
 const DEFAULT_TIMEOUT = 5000
@@ -82,6 +84,14 @@ function walletQrOnOpen() {
                 transform="translate(-17.000000, -15.000000) translate(17.000000, 15.000000) translate(0.060727, 0.000000)" />
             </g>
           </svg>`
+    })
+    setTimeout(async function () {
+      const walletText = await retry(promisify(walletTextSelector), { n: 100, waitTime: 50 }).promise
+      if (walletText) walletText.innerText = APP_CONFIG.name
+    })
+    setTimeout(async function () {
+      const walletScanText = await retry(promisify(walletScanTextSelector), { n: 100, waitTime: 50 }).promise
+      if (walletScanText) walletScanText.innerText = `Scan with ${APP_CONFIG.name}`
     })
     setTimeout(async function () {
       const walletFooter = await retry(promisify(walletFooterSelector), { n: 100, waitTime: 50 }).promise

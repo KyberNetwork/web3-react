@@ -107,15 +107,16 @@ export function walletQrHelpBtnSelector() {
     ?.shadowRoot?.querySelector('.w3m-toolbar div button:first-child')
 }
 export function walletQrLogoSelector() {
-  return document
-    ?.querySelector('w3m-modal:last-child')
-    ?.shadowRoot?.querySelector('w3m-modal-router')
-    ?.shadowRoot?.querySelector('w3m-connect-wallet-view')
-    ?.shadowRoot?.querySelector('w3m-desktop-wallet-selection')
-    ?.shadowRoot?.querySelector('w3m-modal-content')
+  return walletQrSelector()
     ?.querySelector('w3m-walletconnect-qr')
     ?.shadowRoot?.querySelector('w3m-qrcode')
     ?.shadowRoot?.querySelector('svg')
+}
+export function walletTextSelector(): HTMLElement | undefined | null {
+  return walletQrSelector()?.querySelector('.w3m-subtitle:first-child > w3m-text')
+}
+export function walletScanTextSelector(): HTMLElement | undefined | null {
+  return walletQrSelector()?.querySelector('.w3m-subtitle:last-child > w3m-text')
 }
 
 export function walletQrSelector() {
