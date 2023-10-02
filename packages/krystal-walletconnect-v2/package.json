@@ -1,6 +1,6 @@
 {
   "name": "@kyberswap/krystal-walletconnect-v2",
-  "version": "0.0.1-rc1.1",
+  "version": "0.0.1",
   "keywords": [
     "web3-react",
     "walletconnect"
